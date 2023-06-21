@@ -1,0 +1,30 @@
+.landing {
+    background-image: url("../../assets/wallpaper.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 100px;
+    border-color: black;
+}
+  
+.elemento {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #323145; /* Color de fondo */
+    color: black; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espacio interno */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como elemento en línea */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    border-radius: 4px; /* Borde redondeado */
+    border-color: black;
+}

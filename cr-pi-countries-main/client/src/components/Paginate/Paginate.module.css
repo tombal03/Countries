@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  
+  li {
+    margin: 0 5px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 5px 10px;
+    border: none;
+    background-color: #e0e0e0;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .buttonPrev,
+  .buttonNext {
+    font-weight: bold;
+  }
+  
+  .currentPage {
+    font-weight: bold;
+    color: #333;
+    background-color: #ffc107;
+  }
+  
+  .button:hover {
+    background-color: #333;
+    color: #fff;
+  }
