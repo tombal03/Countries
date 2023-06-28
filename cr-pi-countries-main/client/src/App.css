@@ -1,8 +1,11 @@
-.App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-  background-color: black
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: linear-gradient(180deg,#182e31, #06142E);
+   font-family:  Courier New,Courier,monospace;
+   margin: 0px
 }

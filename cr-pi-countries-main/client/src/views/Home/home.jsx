@@ -1,32 +1,31 @@
-import CardsContainer from "../../components/CardsContainer/CardsContainer"
-import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import { getCountries,getActivities } from "../../redux/actions"
-import FilterSelector from "../../components/FilterSelector/filterSelector"
-import SortSelector from "../../components/sortSelector/sortSelector"
-import style from "./home.module.css"
+import CardsContainer from "../../components/CardsContainer/CardsContainer";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getCountries, getActivities } from "../../redux/actions";
+import FilterSelector from "../../components/FilterSelector/filterSelector";
+import SortSelector from "../../components/SortSelector/SortSelector";
+import styles from "./home.module.css";
 
 const Home = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCountries());
+  }, []);
 
-    useEffect(()=>{
-        dispatch(getCountries())
-    },[])
-    
-    useEffect(()=>{
-        dispatch(getActivities())
-    },[])
+  useEffect(() => {
+    dispatch(getActivities());
+  }, []);
 
-    
+  return (
+    <div className={styles.home}>
+      <div className={styles.filters}>
+        <FilterSelector />
+        <SortSelector />
+      </div>
+      <CardsContainer />
+    </div>
+  );
+};
 
-    return(
-        <div className={style.home}>
-            <FilterSelector/>
-            <SortSelector/>
-            <CardsContainer/>
-        </div>
-    )
-}
-
-export default Home
+export default Home;

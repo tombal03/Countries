@@ -1,4 +1,4 @@
-const {getCountriesApi, getCountryByName, getCountryByPk, getCountryByActivityID, getCountryByContinent} = require("../services/countryService")
+const {getCountriesApi, getCountryByName, getCountryByPk, getCountryByActivityName, getCountryByContinent} = require("../services/countryService")
 
 const getCountries = async (req, res) => {
     const {name} = req.query;
@@ -27,10 +27,10 @@ const getCountryById = async (req, res) => {
     }
 }
 
-const getCountryByAID = async (req, res) => {
-    const {id} = req.params
+const getCountryByAN = async (req, res) => {
+    const {name} = req.params
     try {
-        const findId = await getCountryByActivityID(id)
+        const findId = await getCountryByActivityName(name)
         return res.status(200).json(findId)
     } catch (error) {
         return res.status(500).json(error.message)
@@ -50,6 +50,6 @@ const getCountryByCont = async (req, res) => {
 module.exports = {
     getCountries,
     getCountryById,
-    getCountryByAID,
+    getCountryByAN,
     getCountryByCont
 }

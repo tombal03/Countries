@@ -5,5 +5,29 @@
     border-radius: 15px;
     flex-wrap: wrap;
     gap: 1em;
-    justify-content: space-between;
+    justify-content: space-between; 
+    height: 100%;
+   padding: 20px;
+    transition: all 300ms;
+    --glow-color: rgb(86, 27, 94);
+    --glow-spread-color: rgba(123, 60, 167, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(126, 27, 162);
+    
+    background-color: var(--btn-color);
+    outline: none;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+         0 0 0.3em 0.3em var(--glow-spread-color),
+         inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .3em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+}
+
+.alert{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 40px
 }

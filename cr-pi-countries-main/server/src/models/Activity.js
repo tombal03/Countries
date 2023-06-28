@@ -27,12 +27,12 @@ module.exports = (sequelize) => {
         allowNull: true
     },
     season: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(255),
         allowNull: false,
         validate: {
-          isIn: [['Verano', 'Otoño', 'Invierno', 'Primavera']]
+          isIn: [['Summer', 'Autumn', 'Winter', 'Spring']]
         }, 
-        defaultValue: "Primavera"
+        defaultValue: "Spring"
     }
   });
 };

@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { getCountries, filterByContinent, filterByActivity } from '../../redux/actions';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import {
+  getCountries,
+  filterByContinent,
+  filterByActivityName,
+} from "../../redux/actions";
+import { useDispatch } from "react-redux";
+import style from "./filterSelector.module.css";
 
 const FilterSelector = () => {
   const [showSecondSelect, setShowSecondSelect] = useState(false);
   const [showTextInput, setShowTextInput] = useState(false);
-  const [textInputValue, setTextInputValue] = useState('');
+  const [textInputValue, setTextInputValue] = useState("");
   const dispatch = useDispatch();
-
-  
 
   const handleSelectChange = (event) => {
     const selectedOption = event.target.value;
@@ -17,17 +20,17 @@ const FilterSelector = () => {
       dispatch(getCountries());
     }
 
-    if (selectedOption === 'opcion1') {
+    if (selectedOption === "Continent") {
       setShowSecondSelect(true);
     } else {
       setShowSecondSelect(false);
     }
 
-    if (selectedOption === 'opcion2') {
+    if (selectedOption === "By Activity name") {
       setShowTextInput(true);
     } else {
       setShowTextInput(false);
-      setTextInputValue('');
+      setTextInputValue("");
     }
   };
 
@@ -35,34 +38,33 @@ const FilterSelector = () => {
     setTextInputValue(event.target.value);
   };
 
-const handleSendResponse = () => {
-    let aux = parseInt(textInputValue)
-    if (Number.isInteger(aux)) {
-        dispatch(filterByActivity(textInputValue))
+  const handleSendResponse = () => {
+    let aux = parseInt(textInputValue);
+    if (!aux) {
+      dispatch(filterByActivityName(textInputValue));
     } else {
-        return alert("Insert a number!")
+      return alert("Insert an activity name");
     }
-}
+  };
 
   const handleSelectedContinent = async (event) => {
     const selectedContinent = event.target.value;
     if (selectedContinent) {
-        let aux = filterByContinent(selectedContinent)
-        dispatch(aux);
+      let aux = filterByContinent(selectedContinent);
+      dispatch(aux);
     }
   };
-  
 
   return (
     <div>
-      <select  value= "" onChange={handleSelectChange}>
+      <select className={style.select} value="" onChange={handleSelectChange}>
         <option value="">Choose a filter option</option>
-        <option value="opcion1">Continent</option>
-        <option value="opcion2">By Activity ID</option>
+        <option value="Continent">Continent</option>
+        <option value="By Activity name">By Activity name</option>
       </select>
 
       {showSecondSelect && (
-        <select onChange={handleSelectedContinent}>
+        <select className={style.select} onChange={handleSelectedContinent}>
           <option value="">Choose a continent</option>
           <option value="South America">South America</option>
           <option value="North America">North America</option>
@@ -70,19 +72,20 @@ const handleSendResponse = () => {
           <option value="Asia">Asia</option>
           <option value="Africa">Africa</option>
           <option value="Oceania">Oceania</option>
-          <option value="Antartica">Antartica</option>
+          <option value="Antarctica">Antarctica</option>
         </select>
       )}
 
       {showTextInput && (
-        <div>
+        <div className={style.searchBox}>
           <input
+            className={style.select}
             type="text"
             value={textInputValue}
             onChange={handleTextInputChange}
-            placeholder="Introduce activity ID"
+            placeholder="Introduce activity name"
           />
-          <button onClick={handleSendResponse}>Search</button>
+          <button className={style.searchBoxIcon} onClick={handleSendResponse}>Search</button>
         </div>
       )}
     </div>

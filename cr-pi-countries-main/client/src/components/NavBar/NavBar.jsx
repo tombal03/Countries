@@ -11,13 +11,15 @@ const NavBar = ({ onSearch }) => {
     dispatch(getCountries());
   };
 
-  const handleChange = (event) => {};
-
   return (
     <div className={style.mainCointaner}>
-      <Link to="/home" onClick={handleHomeClick}>HOME</Link>
+      <Link to="/home" onClick={handleHomeClick} className={style.button}>
+        HOME
+      </Link>
       <SearchBar onSearch={onSearch} />
-      <Link to="/create">FORM</Link>
+      <Link to="/create" className={style.button}>
+        FORM
+      </Link>
     </div>
   );
 };

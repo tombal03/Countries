@@ -95,19 +95,24 @@ const getCountryByPk = async (id) => {
     return aux
 }
 
-const getCountryByActivityID = async (id) => {
-    let paisesFiltrados = Country.findAll({
-        include: {
-          model: Activity,
-          where: { id: id },
-          through: { attributes: [] },
+const getCountryByActivityName = async (activityName) => {
+    const countries = await Country.findAll({
+      include: {
+        model: Activity,
+        where: {
+          name: {
+            [Op.iLike]: `%${activityName}%`,
+          },
         },
-      });
-    return paisesFiltrados
-}
+      },
+    });
+  
+    return countries;
+  }
+  
 
 const getCountryByContinent = async (continent) => {
-    let paisesFiltrados = Country.findAll({
+    let paisesFiltrados = await Country.findAll({
         where: {
           continent: continent
         },
@@ -119,6 +124,6 @@ module.exports = {
     getCountriesApi, 
     getCountryByName,
     getCountryByPk,
-    getCountryByActivityID,
+    getCountryByActivityName,
     getCountryByContinent
 }
